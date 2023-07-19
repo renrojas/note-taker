@@ -1,6 +1,7 @@
 // Import Express.js
 const express = require('express');
 const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
 
 // Import built-in Node.js package 'path' to resolve path of files that are located on the server
 const path = require('path');
@@ -38,7 +39,7 @@ app.post('/api/notes', (req, res) =>{
           const newNote = {
             title:titleText.title,
             text: req.body.text,
-            id: 1,
+            id: uuidv4(),
           };
           parsedData.push(newNote);
           console.log(parsedData)
