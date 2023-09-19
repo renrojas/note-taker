@@ -1,24 +1,20 @@
-// Import Express.js
 const express = require('express');
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 
-// Import built-in Node.js package 'path' to resolve path of files that are located on the server
 const path = require('path');
 
 // Initialize an instance of Express.js
 const app = express();
 
-// Specify on which port the Express.js server will run
 const PORT = process.env.PORT || 3001
 
 // Static middleware pointing to the public folder
 app.use(express.static('public'));
 app.use(express.json());
 
-// Create Express.js routes for default '/', '/send' and '/routes' endpoints
+//Express.js routes for default '/', '/send' and '/routes' endpoints
 app.get('/', (req, res) => 
- // res.send('Navigate to /send or /routes'));
  res.sendFile(path.join(__dirname, 'public/index.html'))
  );
 
@@ -52,7 +48,7 @@ app.post('/api/notes', (req, res) =>{
       });
 })
 
-// listen() method is responsible for listening for incoming connections on the specified port 
+//responsible for listening for incoming connections on the specified port 
 app.listen(PORT, () =>
   console.log(`Example app listening at http://localhost:${PORT}`)
 );
