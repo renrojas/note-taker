@@ -17,7 +17,10 @@ app.use(express.static('public'));
 app.use(express.json());
 
 // Create Express.js routes for default '/', '/send' and '/routes' endpoints
-app.get('/', (req, res) => res.send('Navigate to /send or /routes'));
+app.get('/', (req, res) => 
+ // res.send('Navigate to /send or /routes'));
+ res.sendFile(path.join(__dirname, 'public/index.html'))
+ );
 
 app.get('/notes', (req, res) =>
    res.sendFile(path.join(__dirname, 'public/notes.html'))
